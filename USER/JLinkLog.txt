@@ -1,0 +1,32 @@
+
+T1C60 000:877 SEGGER J-Link V4.90 Log File (0000ms, 0273ms total)
+T1C60 000:877 DLL Compiled: Jul 28 2014 10:35:20 (0000ms, 0273ms total)
+T1C60 000:877 Logging started @ 2017-04-04 02:01 (0000ms, 0273ms total)
+T1C60 000:878 JLINK_SetWarnOutHandler(...) (0000ms, 0273ms total)
+T1C60 000:878 JLINK_OpenEx(...)
+Firmware: J-Link ARM V8 compiled Jan 31 2018 18:34:52
+Hardware: V8.00
+S/N: 20080643
+Feature(s): RDI,FlashDL,FlashBP,JFlash,GDBFull  returns O.K. (0267ms, 0540ms total)
+T1C60 001:145 JLINK_SetErrorOutHandler(...) (0000ms, 0540ms total)
+T1C60 001:145 JLINK_ExecCommand("ProjectFile = "F:\NeverGiveUp\USER\JLinkSettings.ini"", ...)Device "UNSPECIFIED" selected (0 KB flash, 0 KB RAM).  returns 0x00 (0003ms, 0543ms total)
+T1C60 001:148 JLINK_ExecCommand("Device = STM32F407VGTx", ...)Device "UNSPECIFIED" selected (0 KB flash, 0 KB RAM).  returns 0x00 (0001ms, 0544ms total)
+T1C60 001:149 JLINK_ExecCommand("DisableConnectionTimeout", ...)  returns 0x01 (0000ms, 0544ms total)
+T1C60 001:149 JLINK_GetHardwareVersion()  returns 0x13880 (0000ms, 0544ms total)
+T1C60 001:149 JLINK_GetDLLVersion()  returns 49000 (0000ms, 0544ms total)
+T1C60 001:149 JLINK_GetFirmwareString(...) (0000ms, 0544ms total)
+T1C60 001:149 JLINK_GetDLLVersion()  returns 49000 (0000ms, 0544ms total)
+T1C60 001:149 JLINK_GetCompileDateTime() (0000ms, 0544ms total)
+T1C60 001:149 JLINK_GetFirmwareString(...) (0000ms, 0544ms total)
+T1C60 001:149 JLINK_GetHardwareVersion()  returns 0x13880 (0000ms, 0544ms total)
+T1C60 001:149 JLINK_TIF_Select(JLINKARM_TIF_SWD)  returns 0x00 (0002ms, 0546ms total)
+T1C60 001:151 JLINK_SetSpeed(10000) (0000ms, 0546ms total)
+T1C60 001:152 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)  returns JLINKARM_RESET_TYPE_NORMAL (0000ms, 0546ms total)
+T1C60 001:152 JLINK_Reset() >0x108 TIF>Found SWD-DP with ID 0x2BA01477 >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x21 TIF> >0x0D TIF> >0x28 TIF> >0x0D TIF>
+ >0x21 TIF> >0x0D TIF> >0x21 TIF>Found Cortex-M4 r0p1, Little endian. >0x0D TIF> >0x28 TIF> -- CPU_WriteMem(4 bytes @ 0xE0002000) -- CPU_ReadMem(4 bytes @ 0xE000EDF0) -- CPU_ReadMem(4 bytes @ 0xE0002000)FPUnit: 6 code (BP) slots and 2 literal slots -- CPU_ReadMem(4 bytes @ 0xE000EDFC) -- CPU_ReadMem(4 bytes @ 0xE0001000) -- CPU_WriteMem(4 bytes @ 0xE0001000) -- CPU_ReadMem(4 bytes @ 0xE00FF010)TPIU fitted. -- CPU_ReadMem(4 bytes @ 0xE00FF014)ETM fitted. -- CPU_ReadMem(4 bytes @ 0xE00FF018)
+ -- CPU_WriteMem(4 bytes @ 0xE0002000) -- CPU_ReadMem(4 bytes @ 0xE000EDFC) -- CPU_WriteMem(4 bytes @ 0xE000EDFC) -- CPU_ReadMem(4 bytes @ 0xE0001000) (0046ms, 0592ms total)
+T1C60 001:198 JLINK_GetId() >0x0D TIF> >0x21 TIF>  returns 0x2BA01477 (0001ms, 0593ms total)
+T1C60 001:208 JLINK_GetFirmwareString(...) (0000ms, 0593ms total)
+T1C60 002:805 JLINK_Close() -- CPU_WriteMem(4 bytes @ 0xE0001004) >0x42 TIF> >0x28 TIF> >0x0D TIF> >0x21 TIF> (0005ms, 0598ms total)
+T1C60 002:805  (0005ms, 0598ms total)
+T1C60 002:805 Closed (0006ms, 0599ms total)
