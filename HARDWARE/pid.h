@@ -3,6 +3,7 @@
 
 #define IMU_UPDATE_DT 0.004
 #define PIDdeadband 0.01
+#define WIND_SIZE 10 
 
 extern float pitch;
 extern float roll;
@@ -24,13 +25,9 @@ typedef struct{
 	float prevOutput;
 } PID_Typedef;
 
-float FilterGx(float in);
+
 void PID_Init(PID_Typedef* pid, const float desired, const float kp, const float ki, const float kd);
 float PID_Update(PID_Typedef* pid, const float measured, float desired);
-
-
-
-
-
+void aWind_Filter(short *ax, short*ay, short* az);
 #endif
 

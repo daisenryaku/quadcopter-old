@@ -32,13 +32,12 @@
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
 ..\obj\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\main.o: ..\HARDWARE\led.h
 ..\obj\main.o: ..\HARDWARE\pwm.h
 ..\obj\main.o: ..\HARDWARE\MPU6050.h
 ..\obj\main.o: ..\HARDWARE\I2C.h
 ..\obj\main.o: ..\HARDWARE\niming.h
-..\obj\main.o: ..\HARDWARE\eMPL\inv_mpu.h
-..\obj\main.o: ..\HARDWARE\eMPL\inv_mpu_dmp_motion_driver.h
+..\obj\main.o: ..\HARDWARE\Attitude.h
+..\obj\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\main.o: ..\HARDWARE\pid.h
 ..\obj\main.o: ..\UCOSII\CONFIG\includes.h
 ..\obj\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

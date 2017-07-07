@@ -1,20 +1,18 @@
 #include "sys.h"
 #include "delay.h"
 #include "usart.h"
-#include "led.h"
 #include "pwm.h"
 #include "MPU6050.h"
 #include "niming.h"
-#include "inv_mpu.h"
-#include "inv_mpu_dmp_motion_driver.h" 
+#include "Attitude.h"
 #include "pid.h"
 #include "includes.h"
 
 /*
-7.6
-DMP解算
+7.7
+四元数解算
 单级 位置型 PID
-均值滤波
+滑动窗口滤波
 */
 
 
@@ -26,7 +24,7 @@ DMP解算
 //姿态解算相关变量
 short aacx,aacy,aacz;		//加速度传感器原始数据
 short gyrox,gyroy,gyroz;	//陀螺仪原始数据
-float pitch, roll, yaw;    //欧拉角
+float pitch=0.0, roll=0.0, yaw=0.0;    //欧拉角
 
 // PID相关变量
 int16_t motor1=1150, motor2=1150, motor3=1150, motor4=1150; //电机转速
@@ -73,15 +71,11 @@ int main(void)
 { 
 	delay_init(100-1);		//初始化延时函数
     Motor_Init();	        //电机初始化能转
-	//LED_Init();		    //初始化LED端口
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
     //uart_init(115200);	//串口初始化波特率为115200  
 	uart_init(500000);      //串口初始化
 	MPU_Init();             //MPU6050初始化
-	while( mpu_dmp_init())  //MPU6050 DMP初始化
-	{
-		delay_ms(10);
-	}
+	
 	float Kp=1,Ki=0.5,kd=0.01;
 	pid_Pitch = (PID_Typedef*)malloc(sizeof(PID_Typedef));
 	pid_Yaw = (PID_Typedef*)malloc(sizeof(PID_Typedef));
@@ -89,6 +83,7 @@ int main(void)
 	PID_Init(pid_Pitch, 0, Kp, Ki , kd);
 	PID_Init(pid_Yaw,   0, Kp, Ki , kd);
 	PID_Init(pid_Roll , 0, Kp, Ki , kd);
+	
 	OSInit();   
  	OSTaskCreate(start_task,(void *)0,(OS_STK *)&START_TASK_STK[START_STK_SIZE-1],START_TASK_PRIO );//创建起始任务
 	OSStart();	
@@ -147,18 +142,14 @@ void PID_task(void *pdata)
 //3 GY86姿态解算任务
 void GY86_task(void *pdata)
 {	  
-	while(1){
-		
-		if ( mpu_dmp_get_data(&pitch,&roll,&yaw) == 0 ){
-			MPU_Get_Accelerometer(&aacx,&aacy,&aacz);	//得到加速度传感器数据
-			MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);	//得到陀螺仪数据
-			pitch = FilterGx( pitch );
-			roll = FilterGx( roll );
-			yaw = FilterGx(yaw);
-			usart2_report_imu(aacx,aacy,aacz,gyrox,gyroy,gyroz,-(int)(roll*100),-(int)(pitch*100),(int)(yaw*10));
-		}
-		//printf("\r\nTask2---GY86\r\n");
-		delay_ms(10);
+  while(1){
+	 MPU_Get_Accelerometer(&aacx,&aacy,&aacz);	//得到加速度传感器数据
+	 aWind_Filter(&aacx,&aacy,&aacz);
+	 MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);	//得到陀螺仪数据	
+     Attitude(gyrox,gyroy,gyroz,aacx,aacy,aacz);  
+	 //usart2_report_imu(aacx,aacy,aacz,gyrox,gyroy,gyroz,-(int)(roll*100),-(int)(pitch*100),(int)(yaw*10));
+	 //printf("\r\nTask2---GY86\r\n");
+	 delay_ms(10);
 	}
 }
 

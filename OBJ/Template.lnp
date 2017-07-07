@@ -21,6 +21,7 @@
 "..\obj\inv_mpu_dmp_motion_driver.o"
 "..\obj\niming.o"
 "..\obj\pid.o"
+"..\obj\attitude.o"
 "..\obj\os_core.o"
 "..\obj\os_flag.o"
 "..\obj\os_mbox.o"

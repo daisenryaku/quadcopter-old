@@ -1,20 +1,6 @@
 #include <pid.h>
 #include <math.h>
 
-float FilterGx(float in)  //输入采集信号 in，返回滤波器输出值 
-{
-static double w[5] = {0};  //输出移位寄存器 
-static double y;  //输出值 
-//输出的 N 级延时链 
-w[0] = in;
-y = 0.2 * w[0] + 0.2 * w[1] + 0.2 * w[2] + 0.2 * w[3] + 0.2 * w[4];
-w[4] = w[3]; 
-w[3] = w[2]; 
-w[2] = w[1]; 
-w[1] = w[0]; 
-return  (float)y;   //返回滤波器输出值 
-} 
-
 void PID_Init(PID_Typedef* pid, const float desired, const float kp, const float ki, const float kd){
 	pid->desired = desired;
 	pid->error = 0;
@@ -32,8 +18,7 @@ void PID_Init(PID_Typedef* pid, const float desired, const float kp, const float
 	pid->prevOutput = 0;
 }	
 
-float PID_Update(PID_Typedef* pid, const float measured, float desired)
-{
+float PID_Update(PID_Typedef* pid, const float measured, float desired){
   pid->desired = desired;                              //获取期望角度
   pid->error   = pid->desired - measured;              //偏差：期望-测量值
   pid->integ   += pid->error * IMU_UPDATE_DT;          //积分
@@ -65,4 +50,35 @@ float PID_Update(PID_Typedef* pid, const float measured, float desired)
   
   return pid->output;
 }
+
+void aWind_Filter(short *ax, short*ay, short* az){
+  static short ax_para[WIND_SIZE] = {0};
+  static short ay_para[WIND_SIZE] = {0};
+  static short az_para[WIND_SIZE] = {16384,16384,16384,16384,16384,16384,16384,16384,16384,16384};
+ 
+  static short pos = 9;
+  static long int ax_sum,ay_sum,az_sum = 16384*9;
+ 
+  ax_para[pos] = *ax;
+  ay_para[pos] = *ay;
+  az_para[pos] = *az;
+ 
+  pos = (pos+1)%WIND_SIZE;
+ 
+  ax_sum-=ax_para[pos];
+  ay_sum-=ay_para[pos];
+  az_sum-=az_para[pos];
+ 
+  ax_sum+=*ax;
+  ay_sum+=*ay;
+  az_sum+=*az;
+ 
+  *ax = ax_sum/10.0;
+  *ay = ay_sum/10.0;
+  *az = az_sum/10.0;
+  return;
+}
+
+
+
 

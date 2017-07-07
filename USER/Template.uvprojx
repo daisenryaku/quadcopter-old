@@ -538,6 +538,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\pid.c</FilePath>
             </File>
+            <File>
+              <FileName>Attitude.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Attitude.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
