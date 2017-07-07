@@ -1,7 +1,9 @@
 #ifndef __PID_H
 #define __PID_H
 
-#define IMU_UPDATE_DT 0.004
+//#define IMU_UPDATE_DT 0.004
+#define IMU_UPDATE_DT 0.02
+
 #define PIDdeadband 0.01
 #define WIND_SIZE 10 
 
@@ -11,6 +13,7 @@ extern float yaw;
 typedef struct{
 	float desired; 
 	float error;  //±ÈÀý
+	float nextError;
 	float prevError;
 	float integ;  //»ý·Ö
 	float iLimit;

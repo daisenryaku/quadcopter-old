@@ -19,7 +19,6 @@
 /* ************************************ 变量声明 ************************************ */
 // 保证取值在某个范围内
 #define inrange(x) ((x)<=1000 ? 1000 : (x)>1200 ? 1200 : (x))
-#define anglerange(x) ((x)<=-90 ? 90 : (x)>90 ? 90 : (x))	
 
 //姿态解算相关变量
 short aacx,aacy,aacz;		//加速度传感器原始数据
@@ -125,8 +124,7 @@ void PID_task(void *pdata)
 {
 	while(1)
 	{
-		float Pitch_C,Roll_C,Yaw_C;
-		
+		float Pitch_C,Roll_C,Yaw_C;		
 		Pitch_C = PID_Update(pid_Pitch, pitch, 0);
 		Roll_C  = PID_Update(pid_Yaw,   yaw,   0);
 		Yaw_C   = PID_Update(pid_Roll,  roll,  0);
@@ -146,7 +144,8 @@ void GY86_task(void *pdata)
 	 MPU_Get_Accelerometer(&aacx,&aacy,&aacz);	//得到加速度传感器数据
 	 aWind_Filter(&aacx,&aacy,&aacz);
 	 MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);	//得到陀螺仪数据	
-     Attitude(gyrox,gyroy,gyroz,aacx,aacy,aacz);  
+	 aWind_Filter(&gyrox,&gyroy,&gyroz);
+     Attitude(gyrox,gyroy,gyroz,aacx,aacy,aacz);	  
 	 //usart2_report_imu(aacx,aacy,aacz,gyrox,gyroy,gyroz,-(int)(roll*100),-(int)(pitch*100),(int)(yaw*10));
 	 //printf("\r\nTask2---GY86\r\n");
 	 delay_ms(10);

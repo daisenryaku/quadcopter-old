@@ -4,6 +4,7 @@
 void PID_Init(PID_Typedef* pid, const float desired, const float kp, const float ki, const float kd){
 	pid->desired = desired;
 	pid->error = 0;
+	pid->nextError = 0;
 	pid->prevError = 0;
 	pid->integ = 0;
 	pid->iLimit = 100;
@@ -19,6 +20,9 @@ void PID_Init(PID_Typedef* pid, const float desired, const float kp, const float
 }	
 
 float PID_Update(PID_Typedef* pid, const float measured, float desired){
+  /*
+     单极、位置型PID
+  */	
   pid->desired = desired;                              //获取期望角度
   pid->error   = pid->desired - measured;              //偏差：期望-测量值
   pid->integ   += pid->error * IMU_UPDATE_DT;          //积分
@@ -34,7 +38,7 @@ float PID_Update(PID_Typedef* pid, const float measured, float desired){
   
   pid->deriv = (pid->error - pid->prevError) / IMU_UPDATE_DT;     //微分,应该可用陀螺仪角速度代替:pid->deriv = -gyro;
   
-  if(fabs(pid->error) > PIDdeadband )                             //pid死区
+  if(pid->error > PIDdeadband || pid->error < -PIDdeadband )                             //pid死区
   {   
     pid->outP = pid->kp * pid->error;
 	pid->outI = pid->ki * pid->integ;
@@ -51,13 +55,44 @@ float PID_Update(PID_Typedef* pid, const float measured, float desired){
   return pid->output;
 }
 
+/*
+float PID_Update(PID_Typedef* pid, const float measured, float desired){
+  //单极、增量型PID	
+  pid->desired = desired;                              //获取期望角度
+  pid->error   = pid->desired - measured;              //偏差：期望-测量值
+  
+  if(fabs(pid->error) > PIDdeadband )                  //pid死区
+  {   
+    pid->outP = pid->kp * pid->error;
+	pid->outI = pid->ki * pid->integ;
+	pid->outD = pid->kd * pid->deriv;
+	pid->output = pid->outP + pid->outI + pid->outD;
+  }
+  else
+  {
+    pid->output = pid->prevOutput;
+  }
+  pid->prevError = pid->error;                          //更新前一次偏差
+  pid->prevOutput = pid->output;
+  
+  pid->prevError = pid->nextError;  
+  pid->nextError = pid->error;  
+  
+  return pid->output;
+}
+*/
+
 void aWind_Filter(short *ax, short*ay, short* az){
+  /*
+	十阶滑动窗口滤波
+  */	
   static short ax_para[WIND_SIZE] = {0};
   static short ay_para[WIND_SIZE] = {0};
-  static short az_para[WIND_SIZE] = {16384,16384,16384,16384,16384,16384,16384,16384,16384,16384};
+  static short az_para[WIND_SIZE] = {0};
+  //static short az_para[WIND_SIZE] = {16384,16384,16384,16384,16384,16384,16384,16384,16384,16384};
  
   static short pos = 9;
-  static long int ax_sum,ay_sum,az_sum = 16384*9;
+  static long int ax_sum,ay_sum, az_sum =0;// 16384*9;
  
   ax_para[pos] = *ax;
   ay_para[pos] = *ay;

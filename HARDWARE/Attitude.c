@@ -3,8 +3,9 @@
 #define RtA 57.2956l
 
 float kp = 100.0f;              // 比例增益支配率收敛到加速度
-float ki = 0.01f;                // 陀螺仪积分增益支配率
-float halfT = 0.002f;           // 采样周期一半
+float ki = 0.1f;                // 陀螺仪积分增益支配率
+//float halfT = 0.002f;           // 采样周期一半
+float halfT = 0.01f;           // 采样周期一半
 
 float q0 = 1, q1 = 0, q2 = 0, q3 = 0;   //四元数
 float exInt = 0, eyInt = 0, ezInt = 0;  // 比例缩小积分误差
@@ -56,8 +57,8 @@ void Attitude(short gx, short gy, short gz, short ax, short ay, short az)
     q3 = q3 / norm;
 	
     //四元数转欧拉角	
-	roll  = asin(-2 * q1 * q3 + 2 * q0* q2)* RtA; // Roll
-	pitch = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* RtA;
-	yaw   = atan2(2*(q1*q2 + q0*q3),q0*q0+q1*q1-q2*q2-q3*q3) * RtA;              
+	roll  = asin(-2.f * q1 * q3 + 2 * q0* q2)* RtA; // Roll
+	pitch = atan2(2.f *(q2*q3 + q0*q1),q0*q0-q1*q1-q2*q2+q3*q3)* RtA;
+	yaw   = atan2(2.f *(q1*q2 + q0*q3),q0*q0+q1*q1-q2*q2-q3*q3) * RtA;              
 }
 

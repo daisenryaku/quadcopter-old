@@ -1,5 +1,5 @@
 Dependencies for Project 'Template', Target 'Template': (DO NOT MODIFY !)
-F (.\main.c)(0x595EF05A)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\USER -I..\CORE -I..\FWLIB\inc -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE -I..\HARDWARE\eMPL -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT-I E:\Quadcopter\USER\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F411xE -DSTM32F411xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x595F27CE)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\USER -I..\CORE -I..\FWLIB\inc -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE -I..\HARDWARE\eMPL -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT-I E:\Quadcopter\USER\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F411xE -DSTM32F411xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\SYSTEM\sys\sys.h)(0x5958C82D)
 I (..\USER\stm32f4xx.h)(0x542BA483)
 I (..\CORE\core_cm4.h)(0x53C7D530)
@@ -38,7 +38,7 @@ I (..\HARDWARE\I2C.h)(0x56E098A4)
 I (..\HARDWARE\niming.h)(0x592042C9)
 I (..\HARDWARE\Attitude.h)(0x595EEF2A)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
-I (..\HARDWARE\pid.h)(0x595EEFF7)
+I (..\HARDWARE\pid.h)(0x595F255D)
 I (..\UCOSII\CONFIG\includes.h)(0x53B63814)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (D:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x5475F300)
@@ -484,7 +484,7 @@ I (..\FWLIB\inc\stm32f4xx_usart.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_wwdg.h)(0x53DBAFAD)
 I (..\FWLIB\inc\misc.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_flash_ramfunc.h)(0x53DF9330)
-F (..\HARDWARE\MPU6050.c)(0x595DACC2)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\USER -I..\CORE -I..\FWLIB\inc -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE -I..\HARDWARE\eMPL -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT-I E:\Quadcopter\USER\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F411xE -DSTM32F411xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\mpu6050.o --omf_browse ..\obj\mpu6050.crf --depend ..\obj\mpu6050.d)
+F (..\HARDWARE\MPU6050.c)(0x595F25B5)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\USER -I..\CORE -I..\FWLIB\inc -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE -I..\HARDWARE\eMPL -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT-I E:\Quadcopter\USER\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F411xE -DSTM32F411xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\mpu6050.o --omf_browse ..\obj\mpu6050.crf --depend ..\obj\mpu6050.d)
 I (..\HARDWARE\MPU6050.h)(0x592042B9)
 I (..\HARDWARE\I2C.h)(0x56E098A4)
 I (..\SYSTEM\delay\delay.h)(0x53B7797C)
@@ -632,10 +632,10 @@ I (..\FWLIB\inc\stm32f4xx_wwdg.h)(0x53DBAFAD)
 I (..\FWLIB\inc\misc.h)(0x53DBAFAD)
 I (..\FWLIB\inc\stm32f4xx_flash_ramfunc.h)(0x53DF9330)
 I (..\SYSTEM\delay\delay.h)(0x53B7797C)
-F (..\HARDWARE\pid.c)(0x595EF00A)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\USER -I..\CORE -I..\FWLIB\inc -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE -I..\HARDWARE\eMPL -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT-I E:\Quadcopter\USER\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F411xE -DSTM32F411xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
-I (..\HARDWARE\pid.h)(0x595EEFF7)
+F (..\HARDWARE\pid.c)(0x595F21DB)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\USER -I..\CORE -I..\FWLIB\inc -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE -I..\HARDWARE\eMPL -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT-I E:\Quadcopter\USER\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F411xE -DSTM32F411xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
+I (..\HARDWARE\pid.h)(0x595F255D)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
-F (..\HARDWARE\Attitude.c)(0x595EEF2C)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\USER -I..\CORE -I..\FWLIB\inc -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE -I..\HARDWARE\eMPL -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT-I E:\Quadcopter\USER\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F411xE -DSTM32F411xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\attitude.o --omf_browse ..\obj\attitude.crf --depend ..\obj\attitude.d)
+F (..\HARDWARE\Attitude.c)(0x595F2757)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\USER -I..\CORE -I..\FWLIB\inc -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE -I..\HARDWARE\eMPL -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT-I E:\Quadcopter\USER\RTE-I D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F411xE -DSTM32F411xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\attitude.o --omf_browse ..\obj\attitude.crf --depend ..\obj\attitude.d)
 I (..\HARDWARE\Attitude.h)(0x595EEF2A)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (..\USER\stm32f4xx.h)(0x542BA483)

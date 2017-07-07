@@ -22,6 +22,7 @@ u8 MPU_Init(void)
 	return 0;
 }
 */
+
 u8 MPU_Init(void)
 { 
 	u8 res;
@@ -45,6 +46,7 @@ u8 MPU_Init(void)
  	}else return 1;
 	return 0;
 }
+
 //设置MPU6050陀螺仪传感器满量程范围
 //fsr:0,±250dps;1,±500dps;2,±1000dps;3,±2000dps
 //返回值:0,设置成功
